@@ -2,27 +2,27 @@
 
 import { useState, useEffect, useMemo } from "react";
 import {
-  ChevronDown,
-  ChevronUp,
-  MoreHorizontal,
-  Trash,
-  Search,
-  X,
-  ChevronLeft,
-  ChevronRight,
-  RefreshCw,
-  Clock,
+    ChevronDown,
+    ChevronUp,
+    MoreHorizontal,
+    Trash,
+    Search,
+    X,
+    ChevronLeft,
+    ChevronRight,
+    RefreshCw,
+    Clock,
 } from "lucide-react";
 import { format } from "date-fns";
 import { toast } from "sonner";
 
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import {
@@ -50,7 +50,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { categoryColors } from "@/data/categories";
-import { bulkDeleteTransactions } from "@/actions/account";
+import { bulkDeleteTransactions } from "@/actions/accounts";
 import useFetch from "@/hooks/use-fetch";
 import { BarLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
@@ -64,17 +64,17 @@ const RECURRING_INTERVALS = {
     YEARLY: "Yearly",
 };
 
-    export function TransactionTable({ transactions }) {
+export function TransactionTable({ transactions }) {
     const [selectedIds, setSelectedIds] = useState([]);
     const [sortConfig, setSortConfig] = useState({
         field: "date",
         direction: "desc",
     });
-        const [searchTerm, setSearchTerm] = useState("");
-        const [typeFilter, setTypeFilter] = useState("");
-        const [recurringFilter, setRecurringFilter] = useState("");
-        const [currentPage, setCurrentPage] = useState(1);
-        const router = useRouter();
+    const [searchTerm, setSearchTerm] = useState("");
+    const [typeFilter, setTypeFilter] = useState("");
+    const [recurringFilter, setRecurringFilter] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const router = useRouter();
 
     // Memoized filtered and sorted transactions
     const filteredAndSortedTransactions = useMemo(() => {
